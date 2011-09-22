@@ -26,7 +26,7 @@ class LoginView extends PageView{
 			$login = UsuarioController::inciarSesion($usuario);
 			if( $login == UsuarioController::$LOGIN_OK ){
 				$this->setUsuarioActual(UsuarioController::obtener($usuario));
-				$this->redirect("EvaluarPonencias.php");
+				$this->redirect("PonenciasAll.php");
 			} else if ( $login == UsuarioController::$LOGIN_NO_USER_EXIST ) {
 				$this->addMessage(new Message("El usuario no existe", Message::$ERROR));
 				$this->setContent(new HtmlPage("./view/index.php"));
@@ -43,7 +43,7 @@ class LoginView extends PageView{
 				$this->getMenu()->setSelectedSubItem("inicio");
 				$this->getMenu()->setTitle("Entrar al Sistema");
 			} else {
-				$this->redirect("EvaluarPonencias.php");
+				$this->redirect("PonenciasAll.php");
 			}
 		}
 	}
