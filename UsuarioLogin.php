@@ -26,6 +26,8 @@ class LoginView extends PageView{
 			$login = UsuarioController::inciarSesion($usuario);
 			if( $login == UsuarioController::$LOGIN_OK ){
 				$this->setUsuarioActual(UsuarioController::obtener($usuario));
+				//aqui se debe hacer un case/if y verificar que tipo de usuario entro al sistema.
+				//Por el momento se asume que entro un Asistente
 				$this->redirect("PonenciasAll.php");
 			} else if ( $login == UsuarioController::$LOGIN_NO_USER_EXIST ) {
 				$this->addMessage(new Message("El usuario no existe", Message::$ERROR));

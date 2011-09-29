@@ -70,12 +70,20 @@ class UsuarioController{
 	public static function validar($usuario){
 		
 	}
+	
+	public static function enviarMail($usuario){
+		if(mail($usuario->getCorreo(),"Confirmacion de asistencia a ponencias","mensaje"/*parametros adicionales*/) == true)//presiento que aqui hay algo extranio, me regresa false :P
+			return UsuarioController::$MAIL_OK;
+		else
+			return UsuarioController::$MAIL_FAILURE;
+	}
     
 	public static $REGISTER_OK		= "REGISTER.OK";
 	public static $REGISTER_USER_EXIST	= "REGISTER.USER_EXIST";
-
 	public static $LOGIN_OK		= "LOGIN.OK";
 	public static $LOGIN_NO_USER_EXIST	= "LOGIN.NO_USER_EXIST";
 	public static $LOGIN_WRONG_PASSWORD	= "LOGIN.WRONG_PASSWORD";
+	public static $MAIL_OK		="MAIL.OK";
+	public static $MAIL_FAILURE		="MAIL.FAILURE";
 }
 ?>
