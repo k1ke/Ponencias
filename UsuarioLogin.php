@@ -25,10 +25,29 @@ class LoginView extends PageView{
 			
 			$login = UsuarioController::inciarSesion($usuario);
 			if( $login == UsuarioController::$LOGIN_OK ){
-				$this->setUsuarioActual(UsuarioController::obtener($usuario));
-				//aqui se debe hacer un case/if y verificar que tipo de usuario entro al sistema.
-				//Por el momento se asume que entro un Asistente
-				$this->redirect("PonenciasAll.php");
+				$usuario_actual=UsuarioController::obtener($usuario);
+				$this->setUsuarioActual($usuario_actual);
+				//Quien acaba de entrar al sistema? ... abajo se establece quien y se le redirecciona al lugar que le corresponde
+				switch($usuario_actual->getTipo()){
+					case 0: //TODOS
+						break;
+					case 1: //ADMINISTRADOR
+						break;
+					case 2: //PONENTE
+						break;
+					case 3: //COAUTOR
+						break;
+					case 4: //EVALUADOR
+						
+						break;
+					case 5: //ASISTENTE
+							$this->redirect("PonenciasAll.php");
+						break;
+					case 6: //REGISTRADO
+						break;
+					case 7: //PUBLICO
+						break;
+				}
 			} else if ( $login == UsuarioController::$LOGIN_NO_USER_EXIST ) {
 				$this->addMessage(new Message("El usuario no existe", Message::$ERROR));
 				$this->setContent(new HtmlPage("./view/index.php"));
@@ -44,9 +63,11 @@ class LoginView extends PageView{
 				$this->setContent(new HtmlPage("./view/index.php"));
 				$this->getMenu()->setSelectedSubItem("inicio");
 				$this->getMenu()->setTitle("Entrar al Sistema");
-			} else {
+			} 
+			//Las lineas debajo comentadas no me quedan muy claras, son necesarias?, porque?
+			/*else {
 				$this->redirect("PonenciasAll.php");
-			}
+			}*/
 		}
 	}
 }
