@@ -15,6 +15,7 @@ class LoginView extends PageView{
 	
 	public function handleRequest(){
 
+		
 		$this->getMenu()->setSelectedItem("inicio");
 		
 		$action = $this->getQueryParameter("action");
@@ -36,6 +37,7 @@ class LoginView extends PageView{
 					case 2: //PONENTE
 						break;
 					case 3: //COAUTOR
+							$this->redirect("CoautorPanel.php?action=viewPonencias");
 						break;
 					case 4: //EVALUADOR
 						

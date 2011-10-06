@@ -31,6 +31,11 @@ abstract class PageView extends ViewController{
 		$menuitems[] = new MenuItem("misponencias", 		"MisPonencias.php", 			UsuarioType::$PONENTE);
 		$menuitems[] = new MenuItem("adminpanel", 		"AdminPanel.php", 			UsuarioType::$ADMINISTRADOR);
 		$menuitems[] = new MenuItem("evaluar", 			"EvaluarPonencias.php",			UsuarioType::$EVALUADOR);
+		//abajo las 2 lineas siguientes son en cuanto a cuestion de desenio del panel de control del coautor. Aun no definitivas
+		$menuitems[] =new MenuItem("Todas las ponencias","CoautorPanel.php?action=viewPonencias",	UsuarioType::$COAUTOR); //este boton puede no ser exclusivo del coautor
+		$menuitems[] =new MenuItem("Ponencias aprobadas","CoautorPanel.php?action=viewAprobadas",	UsuarioType::$COAUTOR); 
+		$menuitems[] =new MenuItem("Ponencias pendientes","CoautorPanel.php?action=viewPendientes",	UsuarioType::$COAUTOR); 
+
 		
 		$menuitems[] = new MenuItem("registro", 		"Registro.php", 			UsuarioType::$PUBLICO);
 		
